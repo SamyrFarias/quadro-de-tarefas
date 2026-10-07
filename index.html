@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quadro de Tarefas da Equipe</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="cabecalho">
+    <h1>Quadro de Tarefas da Equipe</h1>
+    <p>Acompanhe o que a equipe precisa fazer, está fazendo e já concluiu.</p>
+  </header>
+
+  <main>
+    <section aria-labelledby="titulo-resumo">
+      <h2 id="titulo-resumo">Resumo</h2>
+      <ul class="resumo">
+        <li class="indicador">
+          <span class="indicador-valor" id="total-tarefas"></span>
+          <span>Total</span>
+        </li>
+        <li class="indicador">
+          <span class="indicador-valor" id="contagem-a-fazer"></span>
+          <span>A fazer</span>
+        </li>
+        <li class="indicador">
+          <span class="indicador-valor" id="contagem-fazendo"></span>
+          <span>Fazendo</span>
+        </li>
+        <li class="indicador">
+          <span class="indicador-valor" id="contagem-feito"></span>
+          <span>Feito</span>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="titulo-form">
+      <h2 id="titulo-form">Nova tarefa</h2>
+
+      <!-- novalidate desliga a validação automática do navegador: quem valida é o JavaScript -->
+      <form id="form-tarefa" class="formulario" novalidate>
+        <div class="campo">
+          <label for="titulo">Título</label>
+          <input type="text" id="titulo" name="titulo">
+          <span class="erro" id="erro-titulo"></span>
+        </div>
+
+        <div class="campo">
+          <label for="responsavel">Responsável</label>
+          <input type="text" id="responsavel" name="responsavel">
+          <span class="erro" id="erro-responsavel"></span>
+        </div>
+
+        <div class="campo campo-largo">
+          <label for="descricao">Descrição</label>
+          <textarea id="descricao" name="descricao" rows="3"></textarea>
+          <span class="erro" id="erro-descricao"></span>
+        </div>
+
+        <div class="campo">
+          <label for="categoria">Categoria</label>
+          <select id="categoria" name="categoria">
+            <option value="">Selecione...</option>
+            <option value="Estudo">Estudo</option>
+            <option value="Projeto">Projeto</option>
+            <option value="Reunião">Reunião</option>
+          </select>
+          <span class="erro" id="erro-categoria"></span>
+        </div>
+
+        <div class="campo">
+          <label for="prioridade">Prioridade</label>
+          <select id="prioridade" name="prioridade">
+            <option value="">Selecione...</option>
+            <option value="Baixa">Baixa</option>
+            <option value="Média">Média</option>
+            <option value="Alta">Alta</option>
+          </select>
+          <span class="erro" id="erro-prioridade"></span>
+        </div>
+
+        <div class="campo">
+          <label for="status">Status</label>
+          <select id="status" name="status">
+            <option value="">Selecione...</option>
+            <option value="A fazer">A fazer</option>
+            <option value="Fazendo">Fazendo</option>
+            <option value="Feito">Feito</option>
+          </select>
+          <span class="erro" id="erro-status"></span>
+        </div>
+
+        <div class="campo">
+          <label for="prazo">Prazo</label>
+          <input type="date" id="prazo" name="prazo">
+          <span class="erro" id="erro-prazo"></span>
+        </div>
+
+        <div class="campo-largo">
+          <button type="submit" class="botao">Cadastrar tarefa</button>
+          <p id="mensagem-form" class="sucesso" role="status" hidden></p>
+        </div>
+      </form>
+    </section>
+
+    <section aria-labelledby="titulo-lista">
+      <h2 id="titulo-lista">Tarefas</h2>
+
+      <!-- Busca e filtros: aplicados pelo JavaScript a cada alteração -->
+      <form class="filtros" id="filtros" role="search" aria-label="Buscar e filtrar tarefas">
+        <div class="campo">
+          <label for="busca">Buscar por título ou responsável</label>
+          <input type="search" id="busca" placeholder="Digite para buscar...">
+        </div>
+        <div class="campo">
+          <label for="filtro-status">Status</label>
+          <select id="filtro-status">
+            <option value="">Todos</option>
+            <option value="A fazer">A fazer</option>
+            <option value="Fazendo">Fazendo</option>
+            <option value="Feito">Feito</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="filtro-prioridade">Prioridade</label>
+          <select id="filtro-prioridade">
+            <option value="">Todas</option>
+            <option value="Baixa">Baixa</option>
+            <option value="Média">Média</option>
+            <option value="Alta">Alta</option>
+          </select>
+        </div>
+        <div class="campo">
+          <button type="button" id="limpar-filtros" class="botao botao-secundario">Limpar filtros</button>
+        </div>
+      </form>
+
+      <!-- Mensagem de "carregando" / lista vazia -->
+      <p id="mensagem-lista" class="mensagem" role="status" hidden></p>
+
+      <!-- O JavaScript preenche esta lista com os cards -->
+      <ul id="lista-tarefas" class="lista"></ul>
+    </section>
+  </main>
+
+  <!-- Detalhes completos da tarefa selecionada -->
+  <dialog id="modal-detalhes" aria-labelledby="detalhes-titulo">
+    <article class="detalhes-conteudo">
+      <h3 id="detalhes-titulo"></h3>
+      <dl id="detalhes-lista" class="detalhes"></dl>
+      <button type="button" id="fechar-detalhes" class="botao">Fechar</button>
+    </article>
+  </dialog>
+
+  <footer class="rodape">
+    <p>Projeto AV1 - Programação Web, Unidade I</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

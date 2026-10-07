@@ -1,0 +1,319 @@
+/* ===== Variáveis de cor ===== */
+:root {
+  --fundo: #f3f5f8;
+  --superficie: #ffffff;
+  --texto: #1f2937;
+  --texto-suave: #6b7280;
+  --borda: #d9dee6;
+  --destaque: #1d4ed8;
+  --erro: #b91c1c;
+
+  --status-a-fazer: #b45309;
+  --status-fazendo: #1d4ed8;
+  --status-feito: #15803d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fundo);
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+/* ===== Estrutura da página ===== */
+.cabecalho {
+  background: var(--destaque);
+  color: #fff;
+  padding: 1.5rem 1rem;
+}
+
+.cabecalho h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.6rem;
+}
+
+.cabecalho p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+section + section {
+  margin-top: 2rem;
+}
+
+.rodape {
+  text-align: center;
+  padding: 1rem;
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}
+
+/* ===== Dashboard ===== */
+.resumo {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+}
+
+.indicador {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  color: var(--texto-suave);
+}
+
+.indicador-valor {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--texto);
+}
+
+/* ===== Formulário ===== */
+.formulario {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.campo-largo {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  padding: 0.5rem;
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  background: #fff;
+}
+
+input.invalido,
+select.invalido,
+textarea.invalido {
+  border-color: var(--erro);
+}
+
+.erro {
+  color: var(--erro);
+  font-size: 0.85rem;
+  min-height: 1.2em;
+}
+
+.botao {
+  background: var(--destaque);
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.botao:hover {
+  filter: brightness(1.1);
+}
+
+.sucesso {
+  color: var(--status-feito);
+  font-weight: 600;
+  margin: 0.5rem 0 0;
+}
+
+/* ===== Lista de cards ===== */
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.card {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.card p {
+  margin: 0.15rem 0;
+  font-size: 0.95rem;
+  color: var(--texto-suave);
+}
+
+.card strong {
+  color: var(--texto);
+}
+
+/* Tarefa com prazo vencido e ainda não concluída */
+.card.atrasada {
+  border-left: 4px solid var(--erro);
+}
+
+.card .aviso-atraso {
+  color: var(--erro);
+  font-weight: 600;
+}
+
+.troca-status {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.troca-status select {
+  padding: 0.25rem;
+}
+
+/* ===== Selo de status ===== */
+.selo {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.selo.a-fazer { background: var(--status-a-fazer); }
+.selo.fazendo { background: var(--status-fazendo); }
+.selo.feito   { background: var(--status-feito); }
+
+/* ===== Mensagens (carregando, lista vazia) ===== */
+.mensagem {
+  padding: 1rem;
+  text-align: center;
+  color: var(--texto-suave);
+}
+
+/* ===== Telas menores ===== */
+@media (max-width: 600px) {
+  .cabecalho h1 {
+    font-size: 1.3rem;
+  }
+}
+
+/* ===== Busca e filtros ===== */
+.filtros {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  align-items: end;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+}
+
+/* ===== Botões extras ===== */
+.botao-secundario {
+  background: #fff;
+  color: var(--destaque);
+  border: 1px solid var(--destaque);
+}
+
+.botao-pequeno {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.85rem;
+}
+
+.botao:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.card-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+.card-acoes .troca-status {
+  margin-top: 0;
+}
+
+/* ===== Detalhes (modal) ===== */
+dialog {
+  width: min(480px, 92vw);
+  padding: 0;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  color: var(--texto);
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.detalhes-conteudo {
+  padding: 1.25rem;
+}
+
+.detalhes-conteudo h3 {
+  margin: 0 0 0.75rem;
+}
+
+.detalhes dt {
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.detalhes dd {
+  margin: 0;
+  color: var(--texto-suave);
+}
+
+.detalhes-conteudo .botao {
+  margin-top: 1rem;
+}
+
+/* ===== Acessibilidade ===== */
+:focus-visible {
+  outline: 2px solid var(--destaque);
+  outline-offset: 2px;
+}
