@@ -56,7 +56,7 @@ Nenhuma biblioteca ou framework externo foi usado.
 
 ## 6. Como executar
 
-1. Baixe ou clone o repositório: `git clone [URL DO REPOSITÓRIO]`
+1. Baixe ou clone o repositório: `git clone https://github.com/SamyrFarias/quadro-de-tarefas.git`
 2. Abra o arquivo `index.html` em qualquer navegador moderno (duplo clique).
 
 Não é preciso instalar nada nem iniciar servidor. Ao abrir, aguarde cerca de 1
@@ -64,21 +64,30 @@ segundo: as tarefas iniciais aparecem após o carregamento simulado.
 
 ## 7. Histórico de desenvolvimento
 
-> **[PREENCHA com o que realmente aconteceu no seu repositório.]** Modelo:
+O projeto foi desenvolvido individualmente e enviado ao GitHub com todas as
+funcionalidades já prontas, em um commit inicial na `main`. A ordem em que as
+partes foram construídas foi:
 
-O projeto foi dividido em etapas, cada uma em uma branch integrada à `main`:
+1. HTML e CSS base, dados em memória e listagem em cards.
+2. Dashboard com contadores calculados a partir do array.
+3. Formulário de cadastro com validação em JavaScript.
+4. Alteração de status no card.
+5. Busca textual e filtros por status e prioridade.
+6. Modal com os detalhes da tarefa.
+7. Carregamento simulado com `Promise` e `async/await`.
 
-1. `feature/estrutura` - HTML e CSS base, dados em memória e listagem em cards.
-2. `feature/dashboard` - contadores calculados a partir do array.
-3. `feature/formulario` - cadastro com validação em JavaScript.
-4. `feature/status` - alteração de status no card.
-5. `feature/filtros` - busca textual e filtros por status e prioridade.
-6. `feature/detalhes` - modal com os detalhes da tarefa.
-7. `feature/assincrono` - carregamento simulado com `Promise` e `async/await`.
+Como o desenvolvimento aconteceu localmente, sem versionar etapa por etapa, o
+histórico de branches não reflete essa ordem. Ajustes posteriores ao envio
+foram feitos em branches separadas.
 
-**Dificuldades e soluções:** [descreva 1 ou 2 dificuldades reais que você teve e como resolveu.]
+**Dificuldades e soluções:** ao publicar no GitHub, o Git não estava instalado
+no computador e o terminal retornava `CommandNotFoundException`. Resolvi
+instalando o Git e reabrindo o VS Code para o terminal reconhecer o comando.
+Depois, o primeiro commit falhou por falta de identidade (`user.name` e
+`user.email`), o que também impediu o `push`. Configurei os dois com
+`git config --global` e repeti o commit e o envio.
 
-**Divisão em dupla:** [se for dupla, escreva o que cada integrante fez.]
+**Divisão em dupla:** o projeto foi feito individualmente.
 
 ## 8. Decisões técnicas
 
@@ -132,9 +141,12 @@ com e-mail.
 ## 11. Uso de IA
 
 | Data | Descrição do modelo | Prompt utilizado | Onde foi usado |
-| 07/10/2026 | Claude, chat | Pedi para comparar o projeto com o enunciado da AV1 e apontar o que faltava; depois pedi os ajustes finais e melhorias. | Revisão geral e ajustes em `js/app.js`e `css/style.css`. |
+|---|---|---|---|
+| 07/10/2026 | Claude, chat | Pedi para comparar o projeto com o enunciado da AV1 e apontar o que faltava; depois pedi os ajustes finais e melhorias. | Revisão geral e ajustes em `js/app.js` e `css/style.css`. |
 
 **O que foi revisado ou adaptado:** Revisei as mudanças sugeridas em `js/app.js`
 (uso de `replaceAll`, rejeição da `Promise` no `catch`, revalidação do campo ao
 digitar, ocultação da mensagem de sucesso, foco após mudar status, dashboard com
-zeros no carregamento, destaque de atraso e atributos `aria` nos erros) e testei o comportamento no navegador.
+zeros no carregamento, destaque de atraso e atributos `aria` nos erros) e testei
+o comportamento no navegador. Os comandos de Git foram executados por mim e o
+texto do README foi conferido para refletir o que de fato existe no repositório.
